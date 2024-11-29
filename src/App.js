@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import DashboardLayout from "./components/DashboardLayout";
+import UserManagement from "./components/UserManagement";
+import RoleManagement from "./components/RoleManagement";
+import PermissionManagement from "./components/PermissionManagement";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <DashboardLayout>
+        <Routes>
+          <Route path="/users" element={<UserManagement />} />
+          <Route path="/roles" element={<RoleManagement />} />
+          <Route path="/permissions" element={<PermissionManagement />} />
+        </Routes>
+        <ToastContainer />
+      </DashboardLayout>
+    </Router>
   );
-}
+};
 
 export default App;
